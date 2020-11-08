@@ -13,5 +13,11 @@
 </script>
 
 <style lang="scss">
-  
+  @import '../public/assets/scss/global.scss';
+
+  #app {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
 </style>
