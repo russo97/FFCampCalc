@@ -19,8 +19,8 @@
 
 <script>
 export default {
-  name: "LineList"
-}
+  name: "LineList",
+};
 </script>
 
 <style lang="scss">
@@ -31,40 +31,57 @@ export default {
     max-width: 800px;
     height: auto;
 
-    // ATÉ 600PX
-    @media screen and (max-width: 600px) {
-      ul.linelist {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        justify-content: center;
-        position: relative;
-
-        li {
-          width: 100%;
-          height: 35px;
-          background: white;
-
-          &:not(:last-child),
-          &:not(:first-child) {
-            margin: 1px;
-          }
-        }
-      }
-    }
-
-    // MAIORES QUE 600PX
-    @media screen and (min-width: 601px) {
-      // ul.linelist {}
-    }
-
     ul.linelist {
       width: 100%;
       height: 100%;
       padding: 5px;
       position: relative;
+
+      // ATÉ 600PX
+      @media screen and (max-width: 700px) {
+        & {
+          display: flex;
+          position: relative;
+          align-items: center;
+          flex-direction: column;
+          justify-content: center;
+
+          li {
+            width: 100%;
+            height: 35px;
+            background: white;
+
+            &:not(:last-child),
+            &:not(:first-child) {
+              margin: 1px;
+            }
+          }
+        }
+      }
+
+
+
+
+      // MAIORES QUE 600PX
+      @media screen and (min-width: 701px) {
+        & {
+          display: grid;
+          grid-gap: 2px;
+          grid-template-areas:
+            'title1 title2'
+            'line1  line7'
+            'line2  line8'
+            'line3  line9'
+            'line4  line10'
+            'line5  line11'
+            'line6  line12';
+
+          li {
+            height: 35px;
+            background: white;
+          }
+        }
+      }
     }
   }
 </style>
