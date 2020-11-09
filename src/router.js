@@ -7,7 +7,10 @@ const User2 = {
   template: '<div>User 2</div>'
 }
 
+import LineList from './components/LinesList.vue';
+
 const routes = [
+  { path: '/', component: LineList },
   { path: '/app', component: User },
   { path: '/app2', component: User2 }
 ]
