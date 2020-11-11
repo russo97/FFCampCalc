@@ -1,26 +1,32 @@
 <template>
   <main id="linelist">
     <ul class="linelist">
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
+      <LineItem />
+      <LineItem />
+      <LineItem />
+      <LineItem />
+      <LineItem />
+      <LineItem />
+      <LineItem />
+      <LineItem />
+      <LineItem />
+      <LineItem />
+      <LineItem />
+      <LineItem />
     </ul>
   </main>
 </template>
 
 <script>
-export default {
-  name: "LineList",
-};
+  import LineItem from './LineItem';
+
+  export default {
+    name: "LineList",
+
+    components: {
+      LineItem
+    }
+  }
 </script>
 
 <style lang="scss">
@@ -37,7 +43,7 @@ export default {
       padding: 5px;
       position: relative;
 
-      // ATÉ 600PX
+      // ATÉ 700PX
       @media screen and (max-width: 700px) {
         & {
           display: flex;
@@ -62,7 +68,7 @@ export default {
 
 
 
-      // MAIORES QUE 600PX
+      // MAIORES QUE 700PX
       @media screen and (min-width: 701px) {
         & {
           display: grid;
