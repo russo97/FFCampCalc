@@ -1,30 +1,23 @@
 <template>
   <main id="linelist">
     <ul class="linelist">
-      <LineItem />
-      <LineItem />
-      <LineItem />
-      <LineItem />
-      <LineItem />
-      <LineItem />
-      <LineItem />
-      <LineItem />
-      <LineItem />
-      <LineItem />
-      <LineItem />
-      <LineItem />
+      <LineTitle area="title1" />
+      <LineTitle area="title2" />
+      <LineItem :key="index" :area="index + 1" v-for="(a, index) in 12" />
     </ul>
   </main>
 </template>
 
 <script>
   import LineItem from './LineItem';
+  import LineTitle from './LineTitle';
 
   export default {
     name: "LineList",
 
     components: {
-      LineItem
+      LineItem,
+      LineTitle
     }
   }
 </script>
@@ -55,7 +48,6 @@
           li {
             width: 100%;
             height: 35px;
-            background: white;
 
             &:not(:last-child),
             &:not(:first-child) {
