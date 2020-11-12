@@ -39,6 +39,7 @@ export default {
     [class^="title_"] {
       padding: 2px;
       color: #fff;
+      height: 100%;
       letter-spacing: 1px;
       @extend %flex-center;
       text-transform: uppercase;
@@ -46,22 +47,22 @@ export default {
 
       &[class$="order"] {
         width: 10%;
-        height: 100%;
         max-width: 37px;
       }
 
       &[class$="name"] {
         margin-left: 6px;
         width: calc(50% - 6px);
-        height: calc(100% - 4px);
       }
 
       &[class$="killcount"] {
-        width: 20%;
+        width: 15%;
+        margin-left: 3px;
       }
 
       &[class$="score"] {
-        width: 20%;
+        width: 15%;
+        margin-left: 3px;
       }
     }
   }

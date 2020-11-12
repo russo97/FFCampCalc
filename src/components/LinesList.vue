@@ -55,7 +55,7 @@
 
             &:not(:last-child),
             &:not(:first-child) {
-              margin: 1px;
+              margin-top: 5px;
             }
           }
         }
@@ -68,7 +68,7 @@
       @media screen and (min-width: 701px) {
         & {
           display: grid;
-          grid-gap: 2px 6px;
+          grid-gap: 4px 20px;
           grid-template-areas:
             'title1 title2'
             'line1  line7'
