@@ -49,6 +49,10 @@
             width: 100%;
             height: 35px;
 
+            &.title2 {
+              display: none;
+            }
+
             &:not(:last-child),
             &:not(:first-child) {
               margin: 1px;
@@ -64,7 +68,7 @@
       @media screen and (min-width: 701px) {
         & {
           display: grid;
-          grid-gap: 2px;
+          grid-gap: 2px 6px;
           grid-template-areas:
             'title1 title2'
             'line1  line7'
@@ -76,7 +80,6 @@
 
           li {
             height: 35px;
-            background: white;
           }
         }
       }
