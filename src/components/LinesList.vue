@@ -68,7 +68,7 @@
       @media screen and (min-width: 701px) {
         & {
           display: grid;
-          grid-gap: 4px 20px;
+          grid-gap: 7px 20px;
           grid-template-areas:
             'title1 title2'
             'line1  line7'

@@ -16,6 +16,10 @@ body {
   display: flex;
   position: relative;
   align-items: center;
+  background-size: cover;
   justify-content: center;
-  background-color: #000;
+  background-color: #ff00fe;
+  background-repeat: no-repeat;
+  background-blend-mode: luminosity;
+  background-image: url('../image/background1.jpg');
 }

@@ -30,5 +30,6 @@
     height: 100%;
     position: relative;
     @extend %flex-center;
+    background-color: rgba(0, 0, 0, .9);
   }
 </style>
