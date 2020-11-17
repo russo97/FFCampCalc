@@ -29,6 +29,7 @@
     width: 90%;
     max-width: 800px;
     height: auto;
+    @extend %flex-center;
 
     ul.linelist {
       width: 100%;
@@ -39,6 +40,7 @@
       // ATÉ 700PX
       @media screen and (max-width: 700px) {
         & {
+          max-width: 480px;
           display: flex;
           position: relative;
           align-items: center;
