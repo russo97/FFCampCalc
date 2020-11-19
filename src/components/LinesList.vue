@@ -2,8 +2,14 @@
   <main id="linelist">
     <ul class="linelist">
       <LineTitle area="title1" />
-      <LineTitle area="title2" />
-      <LineItem :key="index" :area="index + 1" v-for="(a, index) in 12" />
+      <LineTitle area="title2" v-if="linesList.length > 6" />
+      <LineItem
+        :key="index"
+        :area="index + 1"
+        :name="line.name"
+        :kills="line.kills"
+        :total="0"
+        v-for="(line, index) in linesList" />
     </ul>
   </main>
 </template>
@@ -18,6 +24,14 @@
     components: {
       LineItem,
       LineTitle
+    },
+
+    computed: {
+      linesList () {
+        const { lines } = this.$store.state;
+
+        return lines;
+      }
     }
   }
 </script>

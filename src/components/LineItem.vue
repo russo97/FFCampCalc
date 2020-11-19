@@ -2,14 +2,20 @@
   <li class="line_item" :style="areaName">
     <div class="line_order"> {{ area }} </div>
 
-    <div class="line_name">STAR</div>
+    <div class="line_name">
+      {{ name }}
+    </div>
 
     <div class="line_killcount">
-      <div class="skew_back">39</div>
+      <div class="skew_back">
+        {{ kills }}
+      </div>
     </div>
 
     <div class="line_score">
-      <div class="skew_back">1960</div>
+      <div class="skew_back">
+        {{ total }}
+      </div>
     </div>
   </li>
 </template>
@@ -19,6 +25,21 @@ export default {
   name: "LineItem",
 
   props: {
+    name: {
+      type: String,
+      required: true,
+      default: 'unknown'
+    },
+    kills: {
+      default: 0,
+      type: Number,
+      required: true,
+    },
+    total: {
+      type: Number,
+      required: true,
+      default: 0
+    },
     area: {
       type: Number,
       required: true
