@@ -2,7 +2,7 @@
   <main id="linelist">
     <ul class="linelist">
       <LineTitle area="title1" />
-      <LineTitle area="title2" v-if="linesList.length > 6" />
+      <LineTitle area="title2" v-if="!oneColumn" />
       <LineItem
         :key="index"
         :area="index + 1"
@@ -10,11 +10,17 @@
         :kills="line.kills"
         :total="line.total"
         v-for="(line, index) in linesList" />
+
+      <AddLine
+        v-if="notFilled"
+        @addline="addLineRouter"
+        :area="linesList.length + 1" />
     </ul>
   </main>
 </template>
 
 <script>
+  import AddLine from './AddLine';
   import LineItem from './LineItem';
   import LineTitle from './LineTitle';
 
@@ -22,12 +28,14 @@
     name: "LineList",
 
     components: {
+      AddLine,
       LineItem,
       LineTitle
     },
 
     data () {
       return {
+        killPoint: 3,
         maxPlacementPoints: 12,
         placementPoints: [12, 10, 8, 6, 4, 2]
       };
@@ -40,18 +48,36 @@
         return positions.reduce((acc, cur) => {
           return acc + ( placementPoints[cur - 1] || 0 );
         }, 0);
+      },
+
+      addLineRouter () {
+        this.$router.push({
+          path: 'addline'
+        });
       }
     },
 
     computed: {
+      oneColumn () {
+        const { lines } = this.$store.state;
+
+        return lines.length <= 6;
+      },
+
+      notFilled () {
+        const { lines } = this.$store.state;
+
+        return lines.length < 12;
+      },
+
       linesList () {
-        const { placementPointsCalc } = this;
+        const { placementPointsCalc, killPoint } = this;
 
         const lines = this.$store.state.lines.map(line => {
           const { kills, positions } = line;
 
           return Object.assign(line, {
-            total: kills * 3 + placementPointsCalc(positions)
+            total: kills * killPoint + placementPointsCalc(positions)
           });
         }).sort((a, b) => b.total - a.total);
 

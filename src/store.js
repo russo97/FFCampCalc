@@ -21,6 +21,34 @@ const store = new Vuex.Store({
       name: 'LGD',
       kills: 14,
       positions: [1, 5, 7]
+    }, {
+      name: 'CRZ',
+      kills: 14,
+      positions: [1, 5, 7]
+    }, {
+      name: 'VRZ',
+      kills: 14,
+      positions: [1, 5, 7]
+    }, {
+      name: 'paiN',
+      kills: 14,
+      positions: [1, 5, 7]
+    }, {
+      name: 'LOUD',
+      kills: 14,
+      positions: [1, 5, 7]
+    }, {
+      name: 'RED',
+      kills: 14,
+      positions: [1, 5, 7]
+    }, {
+      name: 'FLA',
+      kills: 14,
+      positions: [1, 5, 7]
+    }, {
+      name: 'GOD',
+      kills: 14,
+      positions: [1, 5, 7]
     }]
   }
 });
