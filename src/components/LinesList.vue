@@ -8,7 +8,7 @@
         :area="index + 1"
         :name="line.name"
         :kills="line.kills"
-        :total="0"
+        :total="line.total"
         v-for="(line, index) in linesList" />
     </ul>
   </main>
@@ -26,9 +26,34 @@
       LineTitle
     },
 
+    data () {
+      return {
+        maxPlacementPoints: 12,
+        placementPoints: [12, 10, 8, 6, 4, 2]
+      };
+    },
+
+    methods: {
+      placementPointsCalc (positions) {
+        const { placementPoints } = this;
+
+        return positions.reduce((acc, cur) => {
+          return acc + ( placementPoints[cur - 1] || 0 );
+        }, 0);
+      }
+    },
+
     computed: {
       linesList () {
-        const { lines } = this.$store.state;
+        const { placementPointsCalc } = this;
+
+        const lines = this.$store.state.lines.map(line => {
+          const { kills, positions } = line;
+
+          return Object.assign(line, {
+            total: kills * 3 + placementPointsCalc(positions)
+          });
+        }).sort((a, b) => b.total - a.total);
 
         return lines;
       }
