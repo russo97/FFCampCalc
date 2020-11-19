@@ -46,8 +46,9 @@ export default {
   @import '../../public/assets/scss/global.scss';
 
   li.line_item {
-    opacity: .4;
+    opacity: .8;
     cursor: pointer;
+    filter: grayscale(70%);
     @extend %flex-center-between;
     font-family: 'Big Shoulders Stencil Text', cursive;    
 

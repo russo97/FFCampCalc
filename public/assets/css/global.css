@@ -18,8 +18,7 @@ body {
   align-items: center;
   background-size: cover;
   justify-content: center;
-  background-color: #ff00fe;
   background-repeat: no-repeat;
   background-blend-mode: luminosity;
-  background-image: url('../image/background1.jpg');
+  background-image: url('../image/background1.jpg'), linear-gradient(to bottom left, transparent, #ff00ff);
 }
