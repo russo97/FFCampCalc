@@ -9,6 +9,7 @@
         :name="line.name"
         :kills="line.kills"
         :total="line.total"
+        :fname="line.fullName"
         v-for="(line, index) in linesList" />
 
       <AddLine
@@ -36,18 +37,21 @@
     data () {
       return {
         killPoint: 3,
-        maxPlacementPoints: 12,
-        placementPoints: [12, 10, 8, 6, 4, 2]
+        maxPlacementPoints: 12
       };
     },
 
     methods: {
-      placementPointsCalc (positions) {
-        const { placementPoints } = this;
+      placementPointForm (singlePosition) {
+        const { maxPlacementPoints } = this;
 
-        return positions.reduce((acc, cur) => {
-          return acc + ( placementPoints[cur - 1] || 0 );
-        }, 0);
+        return Math.max(0, maxPlacementPoints - (singlePosition - 1) * 2);
+      },
+
+      placementPointsCalc (positions) {
+        const { placementPointForm } = this;
+
+        return positions.reduce((acc, cur) => acc + placementPointForm(cur), 0);
       },
 
       addLineRouter () {

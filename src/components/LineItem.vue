@@ -1,5 +1,5 @@
 <template>
-  <li class="line_item" :style="areaName">
+  <li class="line_item" :style="areaName" :title="fname">
     <div class="line_order"> {{ area }} </div>
 
     <div class="line_name">
@@ -29,6 +29,9 @@ export default {
       type: String,
       required: true,
       default: 'unknown'
+    },
+    fname: {
+      type: String
     },
     kills: {
       default: 0,
