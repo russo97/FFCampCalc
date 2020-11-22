@@ -1,5 +1,5 @@
 <template>
-  <main id="linelist">
+  <div id="linelist">
     <ul class="linelist">
       <LineTitle area="title1" />
       <LineTitle area="title2" v-if="!oneColumn" />
@@ -17,7 +17,7 @@
         @addline="addLineRouter"
         :area="linesList.length + 1" />
     </ul>
-  </main>
+  </div>
 </template>
 
 <script>

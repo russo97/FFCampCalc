@@ -58,11 +58,13 @@ export default {
       &[class$="killcount"] {
         width: 15%;
         margin-left: 3px;
+        text-indent: -15px;
       }
 
       &[class$="score"] {
         width: 15%;
         margin-left: 3px;
+        text-indent: -15px;
       }
     }
   }

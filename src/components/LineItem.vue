@@ -80,7 +80,6 @@ export default {
       font-weight: bold;
       @extend %flex-center;
       background-color: $base_color;
-      font-family: 'Big Shoulders Stencil Text', cursive;
     }
 
     .line_name {
@@ -93,7 +92,6 @@ export default {
       width: calc(50% - 6px);
       border: solid 2px $base_color;
       border-right-color: transparent;
-      font-family: 'Big Shoulders Stencil Text', cursive;
 
       &:before {
         content: '';
@@ -121,6 +119,7 @@ export default {
       height: 100%;
       margin-left: 6px;
       transform: skew(15deg);
+      color: $text-color !important;
       background-color: $base_color;
     }
 

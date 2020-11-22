@@ -50,7 +50,7 @@ export default {
     cursor: pointer;
     filter: grayscale(70%);
     @extend %flex-center-between;
-    font-family: 'Big Shoulders Stencil Text', cursive;    
+    font-family: 'Big Shoulders Stencil Text', cursive;
 
     .line_order {
       width: 10%;
@@ -61,7 +61,6 @@ export default {
       font-weight: bold;
       @extend %flex-center;
       background-color: $base_color;
-      font-family: 'Big Shoulders Stencil Text', cursive;
     }
 
     .line_name {
@@ -74,7 +73,6 @@ export default {
       width: calc(50% - 6px);
       border: solid 2px $base_color;
       border-right-color: transparent;
-      font-family: 'Big Shoulders Stencil Text', cursive;
 
       &:before {
         content: '';
