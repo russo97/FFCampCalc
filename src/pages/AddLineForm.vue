@@ -4,13 +4,14 @@
 
     <div class="form_block">
       <div class="block_item">
-        <input type="text" placeholder="TAG" />
+        <input type="text" placeholder="TAG" autocomplete="off" />
       </div>
       <div class="block_item">
-        <input type="text" placeholder="Nome" />
+        <input type="text" placeholder="Nome" autocomplete="off" />
       </div>
       <div class="block_item">
-        <input type="text" />
+        <button @click="listLineRouter" id="reset">&lt; Voltar</button>
+        <button id="adicionar">+ Adicionar</button>
       </div>
     </div>
   </div>
@@ -18,7 +19,15 @@
 
 <script>
 export default {
-  name: 'AddLineForm'
+  name: 'AddLineForm',
+
+  methods: {
+    listLineRouter () {
+      this.$router.push({
+        path: '/'
+      });
+    }
+  }
 }
 </script>
 
@@ -36,7 +45,7 @@ export default {
 
     .hero {
       color: #000;
-      padding: 20px 0;
+      padding: 15px 0;
       font-size: 14pt;
       text-align: center;
       margin-bottom: 10px;
@@ -63,6 +72,43 @@ export default {
           color: #2C3E50;
           border: solid 1px #ccc;
           font-family: 'Montserrat';
+        }
+
+        button {
+          margin: 5px;
+          color: #fff;
+          width: 100px;
+          border: unset;
+          cursor: pointer;
+          font-weight: bold;
+          padding: 10px 5px;
+          border-radius: 0px;
+          font-family: Montserrat;
+          transition: all 200ms ease;
+
+          &:hover {
+            box-shadow: 0 0 0 2px white, 0 0 0 3px $base_color;
+          }
+
+          &:active {
+            transform: scale(.98);
+          }
+
+          &#adicionar {
+            background-color: $base_color;
+
+            &:hover {
+              box-shadow: 0 0 0 2px white, 0 0 0 3px $base_color;
+            }
+          }
+
+          &#reset {
+            background-color: #f37b56;
+
+            &:hover {
+              box-shadow: 0 0 0 2px white, 0 0 0 3px #f37b56;
+            }
+          }
         }
       }
     }
