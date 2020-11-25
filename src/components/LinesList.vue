@@ -1,5 +1,5 @@
 <template>
-  <div id="linelist">
+  <div id="linelist" key="linelist">
     <ul class="linelist">
       <LineTitle area="title1" />
       <LineTitle area="title2" v-if="!oneColumn" />

@@ -9,7 +9,10 @@
             {{ rank }}
           </option>
         </select>
-        <input type="text" placeholder="Abates" v-model.number.trim="kills" />
+        <input
+          type="text"
+          placeholder="Abates"
+          v-model.number.trim="kills" />
       </div>
     </fieldset>
   </div>

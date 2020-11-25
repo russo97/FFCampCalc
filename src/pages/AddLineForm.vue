@@ -1,5 +1,5 @@
 <template>
-  <div id="addline_form">
+  <div id="addline_form" key="addline">
     <h2 class="hero">adicionar nova line</h2>
 
     <div class="form_block">
