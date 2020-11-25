@@ -11,7 +11,11 @@
         <input type="text" placeholder="Nome" autocomplete="off" v-model="name" />
       </div>
 
-      <FormLinePosition />      
+      <FormLinePosition
+        :key="index"
+        :match="match"
+        v-model="matchInfo"
+        v-for="(match, index) in matchCount" />
 
       <div class="block_item">
         <button @click="listLineRouter" id="reset">&lt; Voltar</button>
@@ -30,7 +34,9 @@ export default {
   data () {
     return {
       tag: '',
-      name: ''
+      name: '',
+      matchCount: 3,
+      matchInfo: []
     };
   },
 
@@ -46,6 +52,12 @@ export default {
 
   components: {
     FormLinePosition
+  },
+
+  watch: {
+    matchInfo (cur) {
+      console.log(cur);
+    }
   }
 }
 </script>

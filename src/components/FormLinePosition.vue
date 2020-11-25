@@ -1,13 +1,15 @@
 <template>
   <div class="block_item">
     <fieldset>
-      <legend>3a queda</legend>
+      <legend>{{ match }}ª queda</legend>
       <div class="fieldbox">
-        <select name="pos" v-model="ranking">
-          <option disabled selected>RANKING</option>
-          <option value="a" :key="a" v-for="a in 12">{{ a }}</option>
+        <select name="ranking" v-model="ranking">
+          <option value="0" disabled selected>RANKING</option>
+          <option :value="rank" :key="rank" v-for="rank in 12">
+            {{ rank }}
+          </option>
         </select>
-        <input type="text" placeholder="Abates" v-model="kills" />
+        <input type="text" placeholder="Abates" v-model.number.trim="kills" />
       </div>
     </fieldset>
   </div>
@@ -24,9 +26,38 @@ export default {
     };
   },
 
+  methods: {
+    returnData () {
+      const { matchInfo } = this;
+
+      this.$emit('input', matchInfo);
+    }
+  },
+
+  computed: {
+    matchInfo () {
+      const { kills, ranking } = this;
+
+      return Object.assign({}, {
+        kills, ranking
+      });
+    }
+  },
+
+  props: {
+    match: {
+      type: Number,
+      required: true
+    }
+  },
+
   watch: {
-    ranking (cur) {
-      console.log(cur);
+    kills() {
+      this.returnData();
+    },
+
+    ranking() {
+      this.returnData();
     }
   }
 };
@@ -40,6 +71,7 @@ export default {
     padding: 5px;
     border-radius: 3px;
     border: solid 1px #ccc;
+    @extend %flex-center;
 
     legend {
       color: #222;
@@ -50,10 +82,19 @@ export default {
     }
 
     .fieldbox {
-      width: 100%;
+      width: 80%;
       display: grid;
       grid-gap: 5px;
-      grid-template: 50px / 30% 1fr;
+      justify-content: center;
+      grid-template: 50px / 40% 40%;
+
+      input,
+      select {
+        color: #444;
+        border: solid 1px #ccc;
+      }
+
+      select { padding-left: 10px; }
     }
   }
 </style>
