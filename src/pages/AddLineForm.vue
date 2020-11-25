@@ -4,11 +4,15 @@
 
     <div class="form_block">
       <div class="block_item">
-        <input type="text" placeholder="TAG" autocomplete="off" />
+        <input type="text" placeholder="TAG" autocomplete="off" v-model="tag" />
       </div>
+
       <div class="block_item">
-        <input type="text" placeholder="Nome" autocomplete="off" />
+        <input type="text" placeholder="Nome" autocomplete="off" v-model="name" />
       </div>
+
+      <FormLinePosition />      
+
       <div class="block_item">
         <button @click="listLineRouter" id="reset">&lt; Voltar</button>
         <button id="adicionar">+ Adicionar</button>
@@ -18,15 +22,30 @@
 </template>
 
 <script>
+import FormLinePosition from '../components/FormLinePosition';
+
 export default {
   name: 'AddLineForm',
+
+  data () {
+    return {
+      tag: '',
+      name: ''
+    };
+  },
 
   methods: {
     listLineRouter () {
       this.$router.push({
         path: '/'
       });
-    }
+    },
+
+    addLine () {}
+  },
+
+  components: {
+    FormLinePosition
   }
 }
 </script>
@@ -48,9 +67,9 @@ export default {
       padding: 15px 0;
       font-size: 14pt;
       text-align: center;
+      font-family: 'Lato';
       margin-bottom: 10px;
       text-transform: uppercase;
-      font-family: 'Lato', sans-serif;
     }
 
     .form_block {
