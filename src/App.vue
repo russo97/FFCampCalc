@@ -17,7 +17,7 @@
     watch: {
       $route(to, from) {
         const [toDepth, fromDepth] = [to, from].map(path => {
-          return path.path.split('/').length;
+          return path.path.split('/').reduce((acc, cur) => acc + cur.length, 0);
         });
 
         this.transitionName = toDepth < fromDepth
@@ -38,22 +38,48 @@
   #app {
     width: 100%;
     height: 100%;
+    overflow: hidden;
     position: relative;
     @extend %flex-center;
     background-color: rgba(0, 0, 0, .85);
   }
 
-  // .slide-left-enter-active,
-  .slide-left-enter-active {
-    opacity: 1;
-    transition: all 1s ease;
+  .slide-left-enter-active,
+  .slide-right-enter-active,
+  .slide-left-leave-active,
+  .slide-right-leave-active {
+    transition: all 300ms ease;
   }
 
   .slide-left-enter,
   .slide-right-enter,
   .slide-left-leave-to,
   .slide-right-leave-to {
-    // opacity: 0;
-    transition: all 1s ease;
+    position: absolute;
+  }
+
+  .slide-left-enter-to,
+  .slide-right-enter-to {
+    transform: translateX(0%);
+  }
+
+
+  // ANIMACOES DURANTE AS MUDANCAS DE ROTAS
+  .slide-left-enter {
+    transform: translateX(300%);
+  }
+
+  .slide-left-leave-to {
+    transform: translateX(-300%);
+  }
+
+
+
+  .slide-right-enter {
+    transform: translateX(-300%);
+  }
+
+  .slide-right-leave-to {
+    transform: translateX(300%);
   }
 </style>
