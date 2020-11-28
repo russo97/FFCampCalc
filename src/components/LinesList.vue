@@ -55,37 +55,39 @@
       },
 
       addLineRouter () {
-        this.$router.push({
-          path: 'addline'
-        });
+        this.$router.push({ path: 'addline' });
       }
     },
 
     computed: {
-      oneColumn () {
+      lines () {
         const { lines } = this.$store.state;
+
+        return lines;
+      },
+
+      oneColumn () {
+        const { lines } = this;
 
         return lines.length <= 6;
       },
 
       notFilled () {
-        const { lines } = this.$store.state;
+        const { lines } = this;
 
         return lines.length < 12;
       },
 
       linesList () {
-        const { placementPointsCalc, killPoint } = this;
+        const { placementPointsCalc, killPoint, lines } = this;
 
-        const lines = this.$store.state.lines.map(line => {
+        return lines.map(line => {
           const { kills, positions } = line;
 
           return Object.assign(line, {
             total: kills * killPoint + placementPointsCalc(positions)
           });
         }).sort((a, b) => b.total - a.total);
-
-        return lines;
       }
     }
   }

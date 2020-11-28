@@ -56,7 +56,7 @@ export default {
   },
 
   watch: {
-    kills(current) {
+    kills (current) {
       const regexp = /\D+/gmi, curStr = String(current);
 
       if (regexp.test(curStr)) {

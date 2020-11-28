@@ -14,12 +14,12 @@
       <FormLinePosition
         :key="index"
         :match="match"
-        v-model="matchInfo"
+        v-model="matchInfo[index]"
         v-for="(match, index) in matchCount" />
 
       <div class="block_item">
         <button @click="listLineRouter" id="reset">&lt; Voltar</button>
-        <button id="adicionar">+ Adicionar</button>
+        <button @click="addLine" id="adicionar">+ Adicionar</button>
       </div>
     </div>
   </div>
@@ -36,18 +36,49 @@ export default {
       tag: '',
       name: '',
       matchCount: 3,
-      matchInfo: []
+      matchInfo: [{}, {}, {}]
     };
   },
 
   methods: {
     listLineRouter () {
-      this.$router.push({
-        path: '/'
-      });
+      this.$router.push({ path: '/' });
     },
 
-    addLine () {}
+    addLine () {
+      const { $store, tag, name, listLineRouter, kills, positions } = this;
+
+      const filled = positions.every(rank => rank);
+
+      if (filled) {
+        $store.commit('addLine',
+          Object.assign({}, {
+            kills,
+            name: tag,
+            positions,
+            fullName: name
+          })
+        );
+
+        listLineRouter();
+      }
+    }
+  },
+
+  computed: {
+    kills () {
+      const { matchInfo } = this;
+
+      return matchInfo
+        .map(match => Number(match.kills))
+        .reduce((acc, cur) => acc + cur, 0);
+    },
+
+    positions () {
+      const { matchInfo } = this;
+
+      return matchInfo.map(match => match.ranking);
+    }
   },
 
   components: {
