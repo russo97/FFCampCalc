@@ -4,15 +4,16 @@
       <legend>{{ match }}ª queda</legend>
       <div class="fieldbox">
         <select name="ranking" v-model="ranking">
-          <option value="0" disabled selected>RANKING</option>
+          <option value="" disabled selected>RANKING</option>
           <option :value="rank" :key="rank" v-for="rank in 12">
             {{ rank }}
           </option>
         </select>
         <input
           type="text"
+          maxlength="2"
           placeholder="Abates"
-          v-model.number.trim="kills" />
+          v-model="kills" />
       </div>
     </fieldset>
   </div>
@@ -24,8 +25,8 @@ export default {
 
   data () {
     return {
-      kills: '',
-      ranking: 1
+      kills: 0,
+      ranking: ''
     };
   },
 
@@ -55,7 +56,13 @@ export default {
   },
 
   watch: {
-    kills() {
+    kills(current) {
+      const regexp = /\D+/gmi, curStr = String(current);
+
+      if (regexp.test(curStr)) {
+        this.kills = Number(curStr.replace(/\D+/gi, ''));
+      }
+
       this.returnData();
     },
 
@@ -71,7 +78,7 @@ export default {
 
   fieldset {
     width: 90%;
-    padding: 5px;
+    padding: 8px 5px;
     border-radius: 3px;
     border: solid 1px #ccc;
     @extend %flex-center;

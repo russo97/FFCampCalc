@@ -23,10 +23,6 @@
         this.transitionName = toDepth < fromDepth
           ? 'slide-right'
           : 'slide-left';
-      },
-
-      transitionName (cur) {
-        console.log(cur);
       }
     }
   }
