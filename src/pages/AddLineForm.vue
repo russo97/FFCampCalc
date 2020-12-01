@@ -8,7 +8,7 @@
       </div>
 
       <div class="block_item">
-        <input type="text" placeholder="Nome" autocomplete="off" v-model="name" />
+        <input type="text" placeholder="Nome" autocomplete="false" v-model="name" />
       </div>
 
       <FormLinePosition
@@ -48,17 +48,15 @@ export default {
     addLine () {
       const { $store, tag, name, listLineRouter, kills, positions } = this;
 
-      const filled = positions.every(rank => rank);
+      const filled = positions.every(rank => rank && !rank.length);
 
-      if (filled) {
-        $store.commit('addLine',
-          Object.assign({}, {
-            kills,
-            name: tag,
-            positions,
-            fullName: name
-          })
-        );
+      if (filled && tag.trim() && name.trim()) {
+        $store.commit('addLine', Object.assign({}, {
+          kills,
+          name: tag,
+          positions,
+          fullName: name
+        }));
 
         listLineRouter();
       }
@@ -83,12 +81,6 @@ export default {
 
   components: {
     FormLinePosition
-  },
-
-  watch: {
-    matchInfo (cur) {
-      console.log(cur);
-    }
   }
 }
 </script>

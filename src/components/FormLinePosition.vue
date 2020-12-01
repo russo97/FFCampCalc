@@ -10,10 +10,12 @@
           </option>
         </select>
         <input
+          required
           type="text"
           maxlength="2"
+          pattern="\d{1,2}"
           placeholder="Abates"
-          v-model="kills" />
+          v-model.number="kills" />
       </div>
     </fieldset>
   </div>
@@ -57,7 +59,7 @@ export default {
 
   watch: {
     kills (current) {
-      const regexp = /\D+/gmi, curStr = String(current);
+      const regexp = /\D+/gi, curStr = String(current);
 
       if (regexp.test(curStr)) {
         this.kills = Number(curStr.replace(/\D+/gi, ''));
@@ -66,7 +68,7 @@ export default {
       this.returnData();
     },
 
-    ranking() {
+    ranking () {
       this.returnData();
     }
   }
