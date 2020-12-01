@@ -2,7 +2,6 @@
   <div id="linelist" key="linelist">
     <ul class="linelist">
       <LineTitle area="title1" />
-      <LineTitle area="title2" v-if="!oneColumn" />
       <LineItem
         :key="index"
         :area="index + 1"
@@ -109,50 +108,25 @@
       position: relative;
 
       // ATÉ 700PX
-      @media screen and (max-width: 700px) {
-        & {
-          max-width: 480px;
-          display: flex;
-          position: relative;
-          align-items: center;
-          flex-direction: column;
-          justify-content: center;
+      & {
+        max-width: 480px;
+        display: flex;
+        position: relative;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
 
-          li {
-            width: 100%;
-            height: 35px;
+        li {
+          width: 100%;
+          height: 35px;
 
-            &.title2 {
-              display: none;
-            }
-
-            &:not(:last-child),
-            &:not(:first-child) {
-              margin-top: 5px;
-            }
+          &.title2 {
+            display: none;
           }
-        }
-      }
 
-
-
-
-      // MAIORES QUE 700PX
-      @media screen and (min-width: 701px) {
-        & {
-          display: grid;
-          grid-gap: 7px 20px;
-          grid-template-areas:
-            'title1 title2'
-            'line1  line7'
-            'line2  line8'
-            'line3  line9'
-            'line4  line10'
-            'line5  line11'
-            'line6  line12';
-
-          li {
-            height: 35px;
+          &:not(:last-child),
+          &:not(:first-child) {
+            margin-top: 5px;
           }
         }
       }
